@@ -1,0 +1,263 @@
+import React, { useState } from 'react';
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Linkedin, 
+  Award, 
+  Users, 
+  TrendingUp, 
+  Database, 
+  Server, 
+  Briefcase, 
+  GraduationCap, 
+  Terminal, 
+  Layout,
+  Clock,
+  CheckCircle2
+} from 'lucide-react';
+
+const Resume = () => {
+  const [activeTab, setActiveTab] = useState('all');
+
+  const contactInfo = {
+    name: "Justin Foshee",
+    role: "IT & Operations Leader",
+    email: "JustinDFoshee@gmail.com",
+    phone: "334-414-0138",
+    location: "Chesterfield, MO 63017",
+    summary: "Results-oriented leader with 15+ years of experience driving operational excellence. Proven ability to enhance efficiency through strategic IT management, process automation, and robust ITSM frameworks."
+  };
+
+  const keyStats = [
+    { label: "Years Experience", value: "15+", icon: Clock, color: "bg-blue-500" },
+    { label: "Clients Supported", value: "4,000+", icon: Users, color: "bg-emerald-500" },
+    { label: "Turnaround Reduced", value: "76%", icon: TrendingUp, color: "bg-purple-500", sub: "60 days to <14 days" },
+    { label: "Team Retention", value: "High", icon: Award, color: "bg-orange-500" }
+  ];
+
+  const coreCompetencies = [
+    "Team Leadership & Mentoring",
+    "Project Management",
+    "Process Automation",
+    "ITSM Architecture (Jira)",
+    "Vendor Management",
+    "SQL Data Analysis"
+  ];
+
+  const technicalSkills = [
+    { name: "Jira / ITSM", level: 95, color: "bg-blue-600" },
+    { name: "SQL (Advanced)", level: 90, color: "bg-indigo-600" },
+    { name: "Vendor Mgmt", level: 85, color: "bg-purple-600" },
+    { name: "PowerShell", level: 75, color: "bg-slate-600" },
+    { name: "Salesforce", level: 80, color: "bg-sky-500" },
+    { name: "Windows Server", level: 85, color: "bg-blue-800" }
+  ];
+
+  const experience = [
+    {
+      company: "ServiceTitan",
+      role: "Technical Services Manager",
+      period: "2020 - Present",
+      location: "St. Louis, MO",
+      color: "border-blue-500",
+      details: [
+        "Reduced layout design turnaround from 60 days to under 14 days by sourcing and managing a 3rd party vendor.",
+        "Lead and mentor a team supporting a portfolio of 4,000+ SaaS clients.",
+        "Architect complex Jira workflows and automation rules to optimize support ops.",
+        "Spearheaded migration of support teams to a unified Jira Service Management platform."
+      ]
+    },
+    {
+      company: "Enterprise Holding Inc.",
+      role: "Information Technology Coordinator",
+      period: "2019 - 2020",
+      location: "St. Louis, MO",
+      color: "border-green-600",
+      details: [
+        "Provided Tier 2 support for 1,500+ field employees and 140+ dealerships.",
+        "Automated repetitive programming tasks using PowerShell, increasing efficiency.",
+        "Supported rollout of major software/equipment changes including CRM and POS systems."
+      ]
+    },
+    {
+      company: "AFS Canteen",
+      role: "Operations Manager",
+      period: "2016 - 2018",
+      location: "Montgomery, AL",
+      color: "border-red-500",
+      details: [
+        "Managed all IT functions: Help desk, Windows Server, SQL database maintenance.",
+        "Led a complete overhaul of scheduling/logistics resulting in optimized routes.",
+        "Oversaw lifecycle management of 1,000+ connected devices."
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-100 font-sans text-slate-800 py-8 px-4 print:p-0 print:bg-white">
+      <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden print:shadow-none print:rounded-none print:max-w-none">
+        
+        {/* Header Section */}
+        <header className="bg-slate-900 text-white p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
+          
+          <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">{contactInfo.name}</h1>
+              <p className="text-xl text-blue-300 font-medium mb-4">{contactInfo.role}</p>
+              <div className="flex flex-wrap gap-4 text-sm text-slate-300">
+                <span className="flex items-center gap-1"><Mail size={16} /> {contactInfo.email}</span>
+                <span className="flex items-center gap-1"><Phone size={16} /> {contactInfo.phone}</span>
+                <span className="flex items-center gap-1"><MapPin size={16} /> {contactInfo.location}</span>
+              </div>
+            </div>
+            
+            <div className="hidden md:block text-right max-w-sm opacity-90 text-sm italic border-l-4 border-blue-500 pl-4">
+              "{contactInfo.summary}"
+            </div>
+          </div>
+        </header>
+
+        {/* Key Metrics Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 -mt-8 relative z-20">
+          {keyStats.map((stat, idx) => (
+            <div key={idx} className="bg-white p-4 rounded-xl shadow-lg border-b-4 border-slate-200 hover:border-blue-500 transition-colors group">
+              <div className={`w-10 h-10 ${stat.color} rounded-lg flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform`}>
+                <stat.icon size={20} />
+              </div>
+              <p className="text-3xl font-bold text-slate-800">{stat.value}</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">{stat.label}</p>
+              {stat.sub && <p className="text-xs text-green-600 font-medium mt-1">{stat.sub}</p>}
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
+          
+          {/* Main Content Column (Left) */}
+          <div className="lg:col-span-2 space-y-10">
+            
+            {/* Professional Experience Timeline */}
+            <section>
+              <h2 className="flex items-center gap-2 text-2xl font-bold text-slate-900 mb-6 pb-2 border-b border-slate-200">
+                <Briefcase className="text-blue-600" /> Professional Experience
+              </h2>
+              
+              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-2.5 before:w-0.5 before:-translate-x-1/2 before:bg-slate-200">
+                {experience.map((job, idx) => (
+                  <div key={idx} className="relative pl-8 md:pl-12 group">
+                    {/* Timeline Dot */}
+                    <div className={`absolute left-0 top-1.5 w-5 h-5 rounded-full border-4 border-white ${job.color.replace('border', 'bg')} shadow-sm z-10 group-hover:scale-125 transition-transform`}></div>
+                    
+                    <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                        <h3 className="text-xl font-bold text-slate-800">{job.role}</h3>
+                        <span className="text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">{job.period}</span>
+                      </div>
+                      <div className="flex items-center gap-2 mb-4 text-slate-500 text-sm font-medium">
+                        <span className="text-slate-700 font-bold">{job.company}</span>
+                        <span>•</span>
+                        <span>{job.location}</span>
+                      </div>
+                      <ul className="space-y-2">
+                        {job.details.map((detail, dIdx) => (
+                          <li key={dIdx} className="flex items-start gap-2 text-slate-600 text-sm leading-relaxed">
+                            <span className="mt-1.5 w-1.5 h-1.5 bg-blue-400 rounded-full flex-shrink-0"></span>
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+            
+            {/* Key Project Highlight Box */}
+            <section className="bg-slate-900 text-white rounded-2xl p-6 md:p-8 relative overflow-hidden">
+               <div className="absolute right-0 top-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+                 <Layout size={200} />
+               </div>
+               <h3 className="text-lg font-bold text-blue-400 mb-2 uppercase tracking-wide">Featured Achievement</h3>
+               <h2 className="text-2xl font-bold mb-4">Unified Jira Service Management Migration</h2>
+               <p className="text-slate-300 leading-relaxed max-w-2xl relative z-10">
+                 Spearheaded a critical project to migrate multiple support teams from siloed systems onto a unified platform. This action enhanced reporting capabilities, standardized service delivery, and significantly improved cross-team collaboration.
+               </p>
+            </section>
+
+          </div>
+
+          {/* Sidebar Column (Right) */}
+          <div className="space-y-8">
+            
+            {/* Competencies Tags */}
+            <section>
+              <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900 mb-4">
+                <Award className="text-blue-600" /> Core Competencies
+              </h2>
+              <div className="flex flex-wrap gap-2">
+                {coreCompetencies.map((skill, idx) => (
+                  <span key={idx} className="px-3 py-1 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 shadow-sm hover:border-blue-500 hover:text-blue-600 transition-colors cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            {/* Technical Skills Charts */}
+            <section className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900 mb-6">
+                <Terminal className="text-blue-600" /> Technical Skills
+              </h2>
+              <div className="space-y-4">
+                {technicalSkills.map((skill, idx) => (
+                  <div key={idx}>
+                    <div className="flex justify-between text-xs font-bold uppercase text-slate-500 mb-1">
+                      <span>{skill.name}</span>
+                      <span>{skill.level}%</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full ${skill.color} rounded-full transition-all duration-1000`} 
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Tech Stack Icons Grid */}
+            <section>
+               <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900 mb-4">
+                <Server className="text-blue-600" /> Environment
+              </h2>
+              <div className="grid grid-cols-2 gap-3">
+                {['Jira / Freshdesk', 'Salesforce', 'Office 365', 'Active Directory', 'macOS / Windows', 'Azure / AWS'].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-slate-600 bg-slate-50 p-2 rounded-lg">
+                    <CheckCircle2 size={14} className="text-green-500" /> {item}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Education */}
+            <section className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+              <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900 mb-2">
+                <GraduationCap className="text-blue-600" /> Education
+              </h2>
+              <h3 className="font-bold text-slate-800">Arizona State University</h3>
+              <p className="text-sm text-blue-600 font-medium">B.S. Information Technology</p>
+              <p className="text-xs text-slate-500 mt-1">Phoenix, AZ</p>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Resume;
